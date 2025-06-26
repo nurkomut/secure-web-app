@@ -4,6 +4,24 @@ Radar İkaz Alıcısı (RWR), bir platformun (genellikle askeri uçak, gemi veya
 
 ---
 
+## 🔐   Elektronik Harp (EW) ile Entegrasyon
+
+RWR sistemleri, diğer elektronik harp (EW) bileşenleriyle entegre çalışarak tehditlere karşı çok katmanlı savunma sağlar:
+
+- **ECM (Electronic Countermeasure):**  
+  RWR tespiti sonrası jamming, deception gibi karşı tedbirler uygulanır.
+
+- **ESM (Electronic Support Measures):**  
+  RWR verileri üzerinden geniş spektrum analizleri gerçekleştirilir.
+
+- **DIRCM, Chaff / Flare Sistemleri:**  
+  Füze tehdidi algılandığında otomatik savunma sistemleri devreye girer.
+
+> 📌 **Örnek:** Füze radar sinyali algılandığında, sistem otomatik olarak flare fırlatımı yapar.
+
+
+---
+
 
 ## 📡 Teknik Mimarisi ve Bileşenleri
 
@@ -63,13 +81,121 @@ Modern bir Radar İkaz Alıcısı (RWR) sistemi, birbiriyle entegre çalışan b
 
 ---
 
+ 
+## 🛰️   Algılama ve Yön Tayini
+
+RWR sistemlerinin temel yeteneklerinden biri, radar sinyallerinin geldiği yönü belirlemektir:
+
+- **Amplitude Comparison:** Farklı yönlerdeki anten sinyal seviyeleri karşılaştırılır.
+- **Time Difference of Arrival (TDOA):** Sinyalin antenlere ulaşım süresindeki farklar analiz edilir.
+- **Interferometry:** Faz farklarına dayalı yüksek hassasiyetli yön tayini sağlar.
+
+> 📌 **Örnek:** RWR, gelen radar sinyalinin saat 3 yönünden geldiğini belirleyebilir.
+
 ---
 
-## 🧪 Örnek Kullanım Komutları
+## 📊  Parametre Çözümleme (Pulse Analysis)
+
+RWR sistemleri, sinyalleri aşağıdaki parametreler üzerinden analiz eder:
+
+- **Frekans (RF)**
+- **Pulse Genişliği (PW)**
+- **Pulse Tekrarlama Frekansı (PRF)**
+- **Pulse Amplitüdü**
+- **Modülasyon tipi (e.g. FMCW, pulsed)**
+
+> 📌 **Not:** Bu parametreler, sinyalin hangi radar türüne ait olduğunu belirlemek için kullanılır.
+
+---
+
+## 🗂️  Tehdit Kütüphanesi (Emitter Library)
+
+Tehdit kütüphanesi, önceden bilinen radar sistemlerinin karakteristik verilerini içerir:
+
+- **Veri Yapısı:** PDW (Pulse Descriptor Word) temelli veri kayıtları
+- **Kapsam:** Arama radarları, takip radarları, atış kontrol radarları, füze radarları vb.
+- **Güncelleme:** Yeni tehdit türleri keşfedildikçe kütüphane güncellenir.
+
+> 📌 **Örnek:** Bir radar sinyali PRF ve PW değerleriyle birlikte tehdit kütüphanesindeki S-300 sistemiyle eşleşebilir.
+
+---
+
+## 🛠️  Çalışma Modları (Operating Modes)
+
+RWR sistemleri, farklı tehdit ortamlarında farklı modlarda çalışarak etkin tehdit algılama ve yanıt imkânı sunar:
+
+- **Wideband Scan Mode:**  
+  Geniş frekans aralığında hızlı tarama yapılır, ancak hassasiyet düşüktür.
+
+- **Narrowband Tracking Mode:**  
+  Belirli bir frekans bölgesine odaklanılarak yüksek hassasiyetli izleme sağlanır.
+
+- **Priority Mode:**  
+  Sadece yüksek tehdit seviyesine sahip radarlar izlenir ve kullanıcıya bildirilir.
+
+> 📌 **Örnek:** Savaş jeti düşman SAM (Surface-to-Air Missile) bölgesine girdiğinde, RWR yalnızca atış kontrol radarlarına öncelik vererek pilotun dikkatini kritik tehditlere yoğunlaştırır.
+
+---
+
+## 🧠  Tehdit Tanıma ve Sınıflandırma Algoritmaları
+
+Modern RWR sistemleri, radar sinyallerini doğru şekilde tanıyabilmek için gelişmiş analiz teknikleri kullanır:
+
+- **Emitter Deinterleaving:**  
+  Farklı radar kaynaklarından gelen sinyallerin ayrıştırılması.
+
+- **Pattern Matching:**  
+  PDW (Pulse Descriptor Word) verilerinin tehdit kütüphanesiyle karşılaştırılarak eşleştirilmesi.
+
+- **Makine Öğrenimi (ML) Tabanlı Tanıma:**  
+  Yeni, bilinmeyen veya hibrit radar türlerinin öğrenilmesi ve sınıflandırılması.
+
+> 📌 **Örnek:** Bilinmeyen PRF varyasyonlarına sahip bir sinyal, eğitilmiş bir ML modeli aracılığıyla mevcut tehdit türleriyle benzerliği tespit edilerek sınıflandırılabilir.
+
+---
+
+## 🧪  Test ve Simülasyon Ortamları
+
+RWR sistemleri sahaya çıkmadan önce kapsamlı test süreçlerinden geçirilir:
+
+- **RF Sinyal Simülatörleri:**  
+  Gerçek radar sinyallerine benzer yapay sinyaller üretir.
+
+- **Hardware-in-the-Loop (HIL):**  
+  Gerçek donanım ile simülasyon ortamı entegre edilerek canlı testler yapılır.
+
+- **CARLA / RWR-Sim gibi simülatörler:**  
+  Eğitim, analiz ve doğrulama için kullanılır.
+
+> 📌 **Örnek:** Sistem, aynı anda 3 farklı yönden gelen radar sinyallerini tanıyıp doğru sınıflandırabiliyor mu?
+
+---
 
 
 
-### 🔹 Radar Sinyali Üretimi
+## ⚙️  Donanım Mimarisi Varyasyonları
+
+RWR sistemlerinin donanım mimarisi, kullanıldıkları platformlara göre farklılık gösterir:
+
+| Platform | Donanım Özellikleri             | Açıklama                                 |
+|----------|----------------------------------|-------------------------------------------|
+| Uçak     | Düşük hacimli, yüksek işlem gücü | Gövde içine gömülü, modüler yapı          |
+| Gemi     | Yüksek güçlü, çok antenli         | Geniş kapsama alanı                       |
+| İHA      | Düşük ağırlık ve düşük güç tüketimi | Mini-RWR versiyonları kullanılır         |
+
+---
+
+## 📄  Dokümantasyon ve Standartlar
+
+RWR sistemlerinin geliştirme ve entegrasyon süreçlerinde aşağıdaki standartlar sıkça kullanılır:
+
+- **MIL-STD-461:** Elektromanyetik girişim ve uyumluluk gereklilikleri
+- **STANAG 4622:** NATO elektronik harp veri formatı standardı
+- **RTCA DO-160:** Havacılık elektroniği çevresel koşul test standartları
+
+> 📌 **Not:** Bu standartlar, sistemin farklı operasyonel ve elektromanyetik ortamlarda güvenilir şekilde çalışmasını garanti altına alır.
+
+
 
 
 
