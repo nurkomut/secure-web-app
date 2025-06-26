@@ -200,8 +200,36 @@ RWR sistemlerinin geliştirme ve entegrasyon süreçlerinde aşağıdaki standar
 
 
 
+## *Katkıda Bulunma*
+
+We welcome contributions! To help:  
+1. Fork the repository.  
+2. Clone your fork (`git clone git@github.com:YOUR_USERNAME/YOUR_REPO.git`).  
+3. Create a branch (`git checkout -b feature/your-feature`).  
+4. Commit changes with clear messages.  
+5. Push to your fork (`git push origin feature/your-feature`).  
+6. Open a Pull Request.  
+
+Follow our coding standards (see [CONTRIBUTING.md](CONTRIBUTING.md)).  
+
+*Topluluk katkilerini memnuniyetle karşılıyoruz! Katkıda bulunmak için yukarıdaki adımları izleyin ve kodlama standartlarımıza uyun.*
+
+---
+
+## *Lisans*
+
+Licensed under the [MIT License](LICENSE.md).  
+*MIT Lisansı altında lisanslanmıştır.*
 
 
+---
+
+## *İletişim* 
+
+
+*Proje Sorumlusu: Sude Nur Komut - [2320191034@stu.istinye.edu.tr]. Hata bulursanız bir sorun bildirin.*
+
+---
 
 
 
